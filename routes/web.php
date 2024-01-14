@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,7 @@ Route::get('/', function () {
 */
 // 買い物リスト管理システム
 Route::get('/', [AuthController::class, 'index']);
+Route::post('/login', [AuthController::class, 'login']);
 Route::get('/user/register', [UserController::class, 'index']);
 Route::post('/user/register', [UserController::class, 'register']);
+Route::get('/task/list', [TaskController::class, 'list']);
