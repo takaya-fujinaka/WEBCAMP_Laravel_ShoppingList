@@ -6,8 +6,16 @@
 @section('contets')
     <body>
         <h1>「買うもの」の登録</h1>
-        <form action="/task/list" method="post">
-            「買うもの」名:<input><br>
+            @if ($errors->any())
+                <div>
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+                </div>
+            @endif
+        <form action="/task/register" method="post">
+            @csrf
+            「買うもの」名:<input neme="name"><br>
             <button>「買うもの」を登録する</button>
         </form>
         <h1>「買うもの」一覧</h1>
@@ -26,7 +34,7 @@
         <br>
         <hr>
         <menu label="リンク">
-        <a href="./index.html">ログアウト</a><br>
+        <a href="/logout">ログアウト</a><br>
         </menu>
 @endsection
     </body>
