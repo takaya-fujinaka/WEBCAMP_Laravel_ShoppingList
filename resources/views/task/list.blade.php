@@ -28,6 +28,14 @@
             <th>登録日</th>
             <th>「買うもの」名</th>
         </tr>
+        @foreach ($list as $task)
+        <tr>
+            <td>{{ $task->created_at }}</td>
+            <td>{{ $task->name }}</td>
+            <td><form action="./top.html"><button>完了</button></form></td>
+            <td><form action="./top.html"><button>削除</button></form></td>
+        </tr>
+        @endforeach
         </table>
         <!--ページネーション -->
         現在 1 ページ目<br>
