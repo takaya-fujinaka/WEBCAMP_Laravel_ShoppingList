@@ -16,7 +16,7 @@ class TaskRegisterPostRequest extends FormRequest
     {
         return [
             //
-            'name' => ['max128'],
+            'name' => ['required', 'max:128'],
         ];
     }
 }
