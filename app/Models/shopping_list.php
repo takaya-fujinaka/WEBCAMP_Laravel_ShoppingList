@@ -10,4 +10,5 @@ class shopping_list extends Model
     use HasFactory;
     
     protected $guarded = ['id'];
+    protected $dates = ['date'];
 }

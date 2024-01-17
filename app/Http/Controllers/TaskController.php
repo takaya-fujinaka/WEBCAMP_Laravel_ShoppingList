@@ -15,6 +15,8 @@ class TaskController extends Controller
      */
      public function list()
      {
+         // 1page辺りの表示アイテム数を設定
+         $per_page = 3;
          //一覧の取得
          $list = shopping_listModel::get();
          //$sql = shopping_listModel::where('user_id', Auth::id())->toSql();
