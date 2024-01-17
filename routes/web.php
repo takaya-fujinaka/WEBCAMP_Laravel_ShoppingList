@@ -27,9 +27,14 @@ Route::get('/user/register', [UserController::class, 'index']);
 Route::post('/user/register', [UserController::class, 'register']);
 //認可処理
 Route::middleware(['auth'])->group(function () {
-    Route::get('/task/list', [TaskController::class, 'list']);
+    Route::prefix('/task')->group(function() {
+        Route::get('/task/list', [TaskController::class, 'list']);
+        Route::post('/task/register', [TaskController::class, 'register']);
+        Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
+    });
+    //
     Route::get('/logout', [AuthController::class, 'logout']);
-    Route::post('/task/register', [TaskController::class, 'register']);
+    
 });
 
 
