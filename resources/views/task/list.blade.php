@@ -9,6 +9,12 @@
             @if (session('front.task_register_success') == true)
                 「買うもの」を登録しました！！
             @endif
+            @if (session('front.task_completed_success') == true)
+                 「買うもの」を完了にしました！！<br>
+            @endif
+            @if (session('front.task_completed_failure') == true)
+                 「買うもの」の完了に失敗しました....<br>
+            @endif
             @if ($errors->any())
                 <div>
                 @foreach ($errors->all() as $error)
