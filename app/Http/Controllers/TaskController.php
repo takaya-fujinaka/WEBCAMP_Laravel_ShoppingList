@@ -70,7 +70,7 @@ class TaskController extends Controller
          }
         //var_dump($task->toArray()); exit;
         //tasks側を削除する
-        $task->delete()
+        $task->delete();
         //completed_tasks側にinsertする
         $dask_datum = $task->toArray();
         unset($dask_datum['created_at']);
