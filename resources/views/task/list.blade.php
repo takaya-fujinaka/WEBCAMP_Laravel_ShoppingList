@@ -9,6 +9,9 @@
             @if (session('front.task_register_success') == true)
                 「買うもの」を登録しました！！
             @endif
+            @if (session('front.task_delete_success') == true)
+                「買うもの」を削除しました！！
+            @endif
             @if (session('front.task_completed_success') == true)
                  「買うもの」を完了にしました！！<br>
             @endif
@@ -39,7 +42,7 @@
             <td>{{  $task->created_at->format('Y/m/d') }}</td>
             <td>{{ $task->name }}</td>
             <td><form action="{{ route('complete', ['task_id' => $task->id]) }}" method="post"> @csrf <button onclick='return confirm("このタスクを「完了」にします。よろしいですか？");' >完了</button></form></td>
-            <td><form action="./top.html"><button>削除</button></form></td>
+            <td><form action="{{ route('delete', ['task_id' => $task->id]) }}" method="post"> @csrf <button onclick='return confirm("このタスクを「削除」にします(削除したら戻せません)。よろしいですか？");' >削除</button></form></td>
         </tr>
         @endforeach
         </table>

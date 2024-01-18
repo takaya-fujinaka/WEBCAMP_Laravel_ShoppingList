@@ -28,6 +28,19 @@ class TaskController extends Controller
          //echo "<pre>\n"; var_dump($sql, $list); exit;
          return view('task.list', ['list' => $list]);
      }
+     public function getshopping_listModel($task_id) {
+      // task_idのレコードを取得する
+      $task = shopping_listModel::find($task_id);
+      if ($task === null) {
+              return null;
+     }
+      // 本人以外のタスクならNGとする
+      if ($task->user_id !== Auth::id()) {
+         return null;
+      }
+      //
+      return $task;
+     }
      /**
       * タスクの新規登録
       */
@@ -64,7 +77,7 @@ class TaskController extends Controller
          //トランザクション開始
          DB::beginTransaction();
          //task_idのレコードを取得する
-         $task = $this->shopping_listModel($task_id);
+         $task = $this->getshopping_listModel($task_id);
          if ($task === null) {
           //task_idが不正なのでトランザクション終了
           throw new \Exception('');
@@ -97,4 +110,19 @@ class TaskController extends Controller
         //一覧に遷移する
         return redirect('/task/list');
        }
+       
+       /**
+        * タスクの削除
+        */
+        public function delete(Request $request, $task_id) {
+         //task_idのレコードを取得する
+         $task = $this->getshopping_listModel($task_id);
+         //タスクを削除する
+         if ($task !== null) {
+          $task->delete();
+          $request->session()->flash('front.task_delete_success', true);
+         }
+         //一覧に遷移する
+         return redirect('/task/list');
+        }
 }

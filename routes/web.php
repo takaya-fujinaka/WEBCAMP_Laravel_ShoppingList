@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/list', [TaskController::class, 'list']);
         Route::post('/register', [TaskController::class, 'register']);
         Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
+        Route::delete('/delete/{task_id}', [TaskController::class, 'delete'])->whereNumber('task_id')->name('delete');
     });
     //
     Route::get('/logout', [AuthController::class, 'logout']);
