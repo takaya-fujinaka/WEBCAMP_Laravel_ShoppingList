@@ -8,6 +8,7 @@ use App\Models\shopping_list as shopping_listModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Completed_shopping_list as Completed_shopping_listModel;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -75,7 +76,7 @@ class TaskController extends Controller
         $dask_datum = $task->toArray();
         unset($dask_datum['created_at']);
         unset($dask_datum['updated_at']);
-        $r = Conpleted_shopping_listModel::create($dask_datum);
+        $r = Completed_shopping_listModel::create($dask_datum);
         if ($r === null) {
          //insertで失敗したのでトランザクション終了
         throw new \Exception('');
