@@ -64,7 +64,7 @@ class TaskController extends Controller
          //トランザクション開始
          DB::beginTransaction();
          //task_idのレコードを取得する
-         $task = $this->getshopping_listModel($task_id);
+         $task = $this->shopping_listModel($task_id);
          if ($task === null) {
           //task_idが不正なのでトランザクション終了
           throw new \Exception('');
