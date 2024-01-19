@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CompletedTaskController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +41,11 @@ Route::middleware(['auth'])->group(function () {
     
 });
 Route::get('/completed_shopping/list', [CompletedTaskController::class, 'list']);
+//管理画面
+Route::prefix('/admin')->group(function () {
+    Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
+    Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
+});
 
 

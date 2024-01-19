@@ -6,7 +6,7 @@
 @section('contets')
     <body>
         <h1>購入済み「買うもの」一覧</h1>
-        <a href="task/list">「買うもの」一覧に戻る</a>
+        <a href="/task/list">「買うもの」一覧に戻る</a>
         <table border="1">
             <tr>
                 <th>登録日</th>
