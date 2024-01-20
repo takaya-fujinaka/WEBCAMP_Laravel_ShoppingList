@@ -20,7 +20,7 @@ class AuthController extends Controller
      /**
       * ログイン処理
       */
-      public function login(AdminPostRequest $request)
+      public function login(AdminLoginPostRequest $request)
       {
        
        //validate済み
@@ -30,16 +30,26 @@ class AuthController extends Controller
        //var_dump($datum); exit;
        
        //認証
-       if (Auth::attempt($datum) === false) {
+       if (Auth::guard('admin')->attempt($datum) === false) {
         return back()
                ->withInput() //入力の保持
                ->withErrors(['auth' => 'ログインIDかパスワードに誤りがあります。',]) //エラーメッセージの出力
                ;
        }
-      }
-      //
+       //
       $request->session()->regenerate();
-      return redirect()->intended('/task/list');
+      return redirect()->intended('/admin/top');
+      }
+      /**
+       * ログアウト処理
+       */
+      public function logout(Request $request)
+      {
+       Auth::logout();
+       $request->session()->regenerateToken(); //csrfトークンの再生成
+       $request->session()->regenerate(); //セッションIDの再生成
+       return redirect(route('front.index'));
+      }
       
      
     
