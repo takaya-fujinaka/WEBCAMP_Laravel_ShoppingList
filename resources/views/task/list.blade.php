@@ -42,6 +42,7 @@
             <td>{{  $task->created_at->format('Y/m/d') }}</td>
             <td>{{ $task->name }}</td>
             <td><form action="{{ route('complete', ['task_id' => $task->id]) }}" method="post"> @csrf <button onclick='return confirm("このタスクを「完了」にします。よろしいですか？");' >完了</button></form></td>
+            <td width="15"></td>
             <td><form action="{{ route('delete', ['task_id' => $task->id]) }}" method="post">
                  @csrf 
                  @method("DELETE")
