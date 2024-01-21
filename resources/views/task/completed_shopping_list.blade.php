@@ -23,7 +23,7 @@
         {{-- $list->links() --}}
         現在 {{ $completed_shopping_list->currentPage() }} ページ目<br>
         @if ($completed_shopping_list->onFirstPage() === false)
-        <a href="/completed_task/list">最初のページ</a>
+        <a href="/completed_shopping/list">最初のページ</a>
         @else
         最初のページ
         @endif
