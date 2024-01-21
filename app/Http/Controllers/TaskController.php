@@ -22,6 +22,7 @@ class TaskController extends Controller
          $per_page = 3;
          //一覧の取得
          $list = shopping_listModel::where('user_id', Auth::id())
+                                   ->orderBy('name')
                                    ->orderBy('created_at')
                                    ->paginate($per_page);
          //$sql = shopping_listModel::where('user_id', Auth::id())->toSql();
