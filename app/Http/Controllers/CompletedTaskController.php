@@ -15,6 +15,7 @@ class CompletedTaskController extends Controller
          $per_page = 3;
          //一覧の取得
          $completed_shopping_list = Completed_shopping_listModel::where('user_id', Auth::id())
+                                   ->orderBy('name')
                                    ->orderBy('created_at')
                                    ->paginate($per_page);
         
