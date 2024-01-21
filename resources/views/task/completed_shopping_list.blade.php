@@ -9,13 +9,13 @@
         <a href="/task/list">「買うもの」一覧に戻る</a>
         <table border="1">
             <tr>
-                <th>登録日</th>
                 <th>「買うもの」名</th>
+                <th>購入日</th>
             </tr>
             @foreach ($completed_shopping_list as $task)
             <tr>
-                <td>{{  $task->created_at->format('Y/m/d') }}</td>
                 <td>{{ $task->name }}</td>
+                <td>{{  $task->created_at->format('Y/m/d') }}</td>
             </tr>
             @endforeach
         </table>
