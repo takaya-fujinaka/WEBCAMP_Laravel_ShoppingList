@@ -22,7 +22,7 @@
             名前:<input name="name"><br>
             email:<input name="email" type="email"><br>
             パスワード:<input name="password" type="password"><br>
-            パスワード再度:<input type="password" name="password_confirmation"><br>
+            パスワード(再度):<input type="password" name="password_confirmation"><br>
             <button>登録する</button>
         </form>
     </body>

@@ -46,7 +46,7 @@
             <td><form action="{{ route('delete', ['task_id' => $task->id]) }}" method="post">
                  @csrf 
                  @method("DELETE")
-                 <button onclick='return confirm("この「買うもの」を「削除」にします。よろしいですか？");' >削除</button></form></td>
+                 <button onclick='return confirm("この「買うもの」を「削除」します。よろしいですか？");' >削除</button></form></td>
         </tr>
         @endforeach
         </table>
